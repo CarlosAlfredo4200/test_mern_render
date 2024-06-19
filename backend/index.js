@@ -10,8 +10,16 @@ const app = express();
 app.use(express.json());
 
 // Configurar CORS para permitir solicitudes desde el frontend
+const allowedOrigins = ['https://frontend-0y5w.onrender.com'];
 app.use(cors({
-  origin: process.env.CORS_ORIGIN
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true); // Allow requests with no origin (e.g., mobile apps, curl requests)
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
 }));
 
 // Verificar si la URI de MongoDB está definida
