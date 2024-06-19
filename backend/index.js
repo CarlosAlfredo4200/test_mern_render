@@ -26,8 +26,10 @@ const PORT = process.env.SERVER_PORT || 3000;
 // Definir una ruta para obtener los usuarios
 app.get('/usuarios', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM usuarios');
-    res.send(result.rows);
+    const result = await pool.query('SELECT NOW()');
+    res.send({
+      user: result.rows(0).now,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send('Error al obtener los usuarios');
