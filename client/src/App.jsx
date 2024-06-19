@@ -13,7 +13,7 @@ function App() {
       <h1> MERN RENDER</h1>
       <button 
         onClick={ async () => {
-          const res = await fetch('http://localhost:3000/usuarios');
+          const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/usuarios`);
           const data = await res.json();
           console.log(data);
         }}

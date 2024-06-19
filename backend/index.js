@@ -1,31 +1,32 @@
 const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
+require('dotenv').config(); // Cargar variables de entorno desde .env
 
 // Crear una instancia de Express
 const app = express();
 
 // Configurar CORS para permitir solicitudes desde el frontend
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: process.env.CORS_ORIGIN
 }));
 
 // Configurar la conexión a la base de datos PostgreSQL
 const pool = new Pool({
-  user: 'postgres', // Reemplaza con tu usuario de PostgreSQL
-  host: 'localhost', // Reemplaza con el host de tu base de datos
-  database: 'pruebacpcs', // Reemplaza con el nombre de tu base de datos
-  password: 'cpcs2024', // Reemplaza con tu contraseña de PostgreSQL
-  port: 5432, // Puerto por defecto de PostgreSQL
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
 // Definir el puerto en el que el servidor escuchará
-const PORT = 3000;
+const PORT = process.env.SERVER_PORT || 3000;
 
 // Definir una ruta para obtener los usuarios
 app.get('/usuarios', async (req, res) => {
   try {
-    const result = await pool.query('select * from usuarios');
+    const result = await pool.query('SELECT * FROM usuarios');
     res.send(result.rows);
   } catch (err) {
     console.error(err);
