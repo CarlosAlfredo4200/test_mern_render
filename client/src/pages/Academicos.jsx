@@ -17,6 +17,17 @@ const Academicos = () => {
         >
           Users
         </button>
+        <button
+          onClick={async () => {
+            const res = await fetch(
+              `${import.meta.env.VITE_BACKEND_URL}/api/student_notes`
+            );
+            const data = await res.json();
+            console.log(data);
+          }}
+        >
+          students
+        </button>
     </div>
   )
 }
