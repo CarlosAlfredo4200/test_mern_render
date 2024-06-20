@@ -1,19 +1,20 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
-require('dotenv').config(); // Cargar variables de entorno desde .env
+require('dotenv').config();
+const mongoose = require('./db'); // Asegúrate de que la configuración de la base de datos sea correcta
+const bodyParser = require('body-parser');
 
-// Crear una instancia de Express
 const app = express();
 
-// Middleware para parsear JSON
-app.use(express.json());
+// Configurar body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Configurar CORS para permitir solicitudes desde el frontend
+// Configuración CORS
 const allowedOrigins = [process.env.FRONTEND_URL];
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // Allow requests with no origin (e.g., mobile apps, curl requests)
+    if (!origin) return callback(null, true);
     if (allowedOrigins.indexOf(origin) === -1) {
       const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
       return callback(new Error(msg), false);
@@ -24,32 +25,17 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Verificar si la URI de MongoDB está definida
-const mongoUri = process.env.MONGODB_URI;
-if (!mongoUri) {
-  console.error('Error: La URI de MongoDB no está definida en las variables de entorno');
-  process.exit(1);
-}
 
-// Configurar la conexión a la base de datos MongoDB
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((err) => {
-    console.error('Error connecting to MongoDB:', err);
-  });
+app.use(express.static('uploads'));
+// Importar y usar las rutas de notas de estudiantes
+const studentNotesRouter = require('./routes/student_notes_sheet_routes');
+app.use('/api/student_notes', studentNotesRouter);
 
-// Definir el puerto en el que el servidor escuchará
-const PORT = process.env.SERVER_PORT || 3000;
-
-// Importar el router de usuarios
+// Resto de tus rutas y configuraciones
 const usuarioRouter = require('./routes/usuario');
+app.use('/api/usuarios', usuarioRouter);
 
-// Usar el router de usuarios
-app.use('/usuarios', usuarioRouter);
-
-// Hacer que el servidor escuche en el puerto definido
+const PORT = process.env.SERVER_PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
