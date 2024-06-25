@@ -4,58 +4,152 @@ body, html {
   width: 100%;
   height: 100%;
   font-family: Arial, sans-serif;
+
 }
 
-.App {
-  text-align: center;
-  color: white;
-  background-image: url('/imgcpcs2024.png');
-  background-size: cover;
+:root {
+  --primary: #1890ff;
+  --primary-hover: #0280b3;
+
+  --background-dark:#001b35;
+  --background-grey:#f0f3f4;
+  --background-dark-web:#16212b;
+
+  --border-grey:#808080;
+
+  --success:#84b84c;
+  --error:#9f3a38;
+  --youtube:#cd201f;
+
+
+}
+
+.auth{
+  
+  background-image: radial-gradient(circle at 50% -20.71%, #a3a7ff 0, #7a8ffc 25%, #3c78f2 50%, #0063e8 75%, #0051de 100%);
+  min-height: 100vh;
   background-position: center;
-  height: 100vh;
+  background-size: contain;
   display: flex;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
+ 
+   
 }
 
-.App-header {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 10px;
+ 
+
+.logo-auth {
+  width: 360px;
+  height: auto;
+   
 }
 
-.App-header h1 {
-  margin: 0;
-  font-size: 2.5em;
-}
-
-.slogan {
-  font-size: 1.2em;
-  margin: 10px 0;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 15px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.1em;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
-}
-
-main {
-  flex: 1;
+.auth__tabs {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.auth__tabs button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.auth__tabs button.active {
+  font-weight: bold;
+}
+
+
+.form-base{
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(ellipse farthest-corner at 45px 30px , #fff 50%, rgba(0, 255, 0, 0) 0%, yellow 50%);
+  width: 800px;
+  height: 500px;
+  border-radius: 12px;
+  border-end-end-radius: 70px;
+   
+  background-color: rgb(186, 186, 186);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  opacity: 0.8;
+
+}
+
+.formulario{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 6px;
+  margin: 30px;
+   
+   
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+ 
+.input-group {
+  display: flex;
+  flex-direction: column;
+   
+  width: 100%;
+}
+.input-group label {
+  color: rgb(87, 87, 87);
+  font-weight: lighter;
+  margin: 10px 0px;
+}
+.input-group input {
+  padding: 10px ;
+  background: hsla(202, 48%, 95%, 0.3);
+  border: 1px solid hsla(0, 0%, 100%, 0.507);
+  outline: none;
+  border-radius: 5px;
+   
+  font-weight: lighter;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+.input-group input:focus {
+  background-color: white;
+}
+.login-button {
+  padding: 10px 30px;
+  width: 100%;
+  border-radius: 5px;
+  background-image: radial-gradient(circle at 50% -20.71%, #a3a7ff 0, #7a8ffc 25%, #3c78f2 50%, #0063e8 75%, #0051de 100%);
+ 
+  border: 1px solid hsl(201, 100%, 50%);
+  outline: none;
+  font-size: 1.5em;
+  color: white;
+  font-weight: lighter;
+  margin-top: 20px;
+  cursor: pointer;
+  /* Agregar transiciones para los cambios de estilo */
+  transition: background-color 0.3s, color 0.3s, font-weight 0.3s;
+}
+.login-button:hover {
+  background-image: radial-gradient(circle at 50% -20.71%, #a3a7ff 0, #7a8ffc 25%, #3c78f2 50%, #0063e8 75%, #ffffff 100%);
+ 
+  color: black;
+  font-weight: 700;
+}
+
+.login-button:focus {
+  background-color: hsla(201, 100%, 50%, 0.5);
 }

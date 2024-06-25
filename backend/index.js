@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configuración CORS
-const allowedOrigins = [process.env.FRONTEND_URL];
+const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:3000', 'http://localhost:5173'];
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
@@ -25,15 +25,24 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-
+// Middleware para servir archivos estáticos desde la carpeta 'uploads'
 app.use(express.static('uploads'));
+
 // Importar y usar las rutas de notas de estudiantes
 const studentNotesRouter = require('./routes/student_notes_sheet_routes');
 app.use('/api/student_notes', studentNotesRouter);
 
-// Resto de tus rutas y configuraciones
+// Importar y usar las rutas de usuarios
 const usuarioRouter = require('./routes/usuario');
 app.use('/api/usuarios', usuarioRouter);
+
+// Importar y usar las rutas de autenticación
+const authRoutes = require("./routes/auth");
+app.use('/api/auth', authRoutes);
+
+// Importar y usar las rutas de usuarios
+const userRoutes = require("./routes/user");
+app.use('/api/users', userRoutes);
 
 const PORT = process.env.SERVER_PORT || 3000;
 app.listen(PORT, () => {
