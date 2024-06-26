@@ -1,28 +1,88 @@
-// LoginForm.jsx
 import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const LoginForm = () => {
-  const [error, seterror] = useState("Ha dado un Error")
-  const handleSubmit = (e) => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+  const [error, setError] = useState('');
+  
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica de manejo del formulario de inicio de sesión
+    // Validación de campos
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setError('El correo electrónico no es válido.');
+      return;
+    }
+    if (formData.password.length < 6) {
+      setError('La contraseña debe tener al menos 6 caracteres.');
+      return;
+    }
+
+    setError('');
+    try {
+      const response = await axios.post('http://localhost:3000/api/auth/login', {
+        email: formData.email,
+        password: formData.password
+      });
+      if (response.data.access && response.data.refresh) {
+        console.log("Access Token:", response.data.access);
+        console.log("Refresh Token:", response.data.refresh);
+        await login(response.data.access, response.data.refresh); // Llama al método de login del contexto con el refreshToken
+        navigate('/admin/users'); // Redirige a AdminLayout después del login exitoso
+      } else {
+        setError(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error en el inicio de sesión:", error);
+      if (error.response) {
+        console.error("Datos de respuesta del error:", error.response.data);
+        setError(error.response.data.message || 'Error en el inicio de sesión. Inténtalo nuevamente.');
+      } else {
+        setError('Error en el inicio de sesión. Inténtalo nuevamente.');
+      }
+    }
   };
 
   return (
-   
-     <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label>Email:</label>
-            <input type="email" placeholder="¡Correo por favor!" />
-          </div>
-          <div className="input-group">
-            <label>Contraseña:</label>
-            <input type="password" placeholder="¡Ingresa tu clave!" />
-          </div>
-          <button  type="submit" className="login-button">Ingresar</button>
-          <p>{error}</p>
-        </form>
-    
+    <form onSubmit={handleSubmit}>
+      <div className="input-group">
+        <label>Email:</label>
+        <input 
+          type="email" 
+          name="email" 
+          value={formData.email} 
+          onChange={handleChange} 
+          placeholder="¡Correo por favor!" 
+        />
+      </div>
+      <div className="input-group">
+        <label>Contraseña:</label>
+        <input 
+          type="password" 
+          name="password" 
+          value={formData.password} 
+          onChange={handleChange} 
+          placeholder="¡Ingresa tu clave!" 
+        />
+      </div>
+      <button type="submit" className="login-button">Ingresar</button>
+      {error && <p className="error" style={{color: 'red'}}>{error}</p>}
+    </form>
   );
 };
 

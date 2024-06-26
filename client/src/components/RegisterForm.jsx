@@ -1,12 +1,15 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import { Auth } from '../api/auth';
+import axiosInstance from '../api/api';
 
-const RegisterForm = () => {
+const RegisterForm = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
-    password: ''
+    password: '',
+    password2: ''
   });
+
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,19 +21,51 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const auth = new Auth(); // Crea una instancia de la clase Auth
+    // Validación de campos
+    if (!formData.name) {
+      setError('El nombre debe ser una cadena no vacía.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setError('El correo electrónico no es válido.');
+      return;
+    }
+    if (formData.password.length < 6) {
+      setError('La contraseña debe tener al menos 6 caracteres.');
+      return;
+    }
+    if (formData.password !== formData.password2) {
+      setError('Las contraseñas no coinciden.');
+      return;
+    }
+
+    setError('');
     try {
-      const result = await auth.register(formData); // Usa el método register de la instancia
-      console.log("Registro exitoso:", result);
-      // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
+      const response = await axiosInstance.post('/register', {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password
+      });
+      console.log("Registro exitoso:", response.data);
+      onSuccess(); // Llama a la función onSuccess después del registro exitoso
     } catch (error) {
       console.error("Error en el registro:", error);
-      // Aquí puedes mostrar un mensaje de error al usuario
+      setError('Error en el registro. Inténtalo nuevamente.');
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <div className="input-group">
+        <label>Nombre:</label>
+        <input 
+          type="text" 
+          name="name" 
+          value={formData.name} 
+          onChange={handleChange} 
+          placeholder="¡Ingresa tu nombre!" 
+        />
+      </div>
       <div className="input-group">
         <label>Email:</label>
         <input 
@@ -51,13 +86,20 @@ const RegisterForm = () => {
           placeholder="¡Ingresa tu clave!" 
         />
       </div>
+      <div className="input-group">
+        <label>Confirmar Contraseña:</label>
+        <input 
+          type="password" 
+          name="password2" 
+          value={formData.password2} 
+          onChange={handleChange} 
+          placeholder="¡Confirmar tu clave!" 
+        />
+      </div>
       <button type="submit" className="login-button">Registrarse</button>
+      {error && <p className="error" style={{color: 'red'}}>{error}</p>}
     </form>
   );
 };
 
 export default RegisterForm;
-
-
-
-

@@ -80,7 +80,7 @@ body, html {
    
   background-color: rgb(186, 186, 186);
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  opacity: 0.8;
+  opacity: 0.9;
 
 }
 
@@ -152,4 +152,199 @@ form {
 
 .login-button:focus {
   background-color: hsla(201, 100%, 50%, 0.5);
+}
+
+.logout-button{
+  padding: 20px 30px;
+  width: 12%;
+  margin-left: 15px;
+  border-radius: 5px;
+  background-image: radial-gradient(circle at 50% -20.71%, #a3a7ff 0, #7a8ffc 25%, #3c78f2 50%, #0063e8 75%, #0051de 100%);
+ 
+  border: 1px solid hsl(0, 0%, 98%);
+  outline: none;
+  font-size: 14px;
+  color: white;
+  font-weight: lighter;
+  opacity: 0.9;
+   
+  cursor: pointer;
+  /* Agregar transiciones para los cambios de estilo */
+  transition: background-color 0.3s, color 0.3s, font-weight 0.3s;
+}
+.logout-button:hover {
+  background-image: radial-gradient(circle at 50% -20.71%, #a3a7ff 0, #7a8ffc 25%, #3c78f2 50%, #0063e8 75%, #ffffff 100%);
+ 
+  color: black;
+  font-weight: 700;
+}
+
+.logout-button:focus {
+  background-color: hsla(201, 100%, 50%, 0.5);
+}
+
+/* AdminHeader.css */
+
+.admin-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-header h4 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.admin-header nav {
+  margin-top: 10px;
+}
+
+.admin-header nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.admin-header nav ul li {
+  margin-right: 10px;
+}
+
+.admin-header nav ul li a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.admin-header nav ul li a:hover {
+  background-color: #e0e0e0;
+}
+
+
+.admin-layout{
+  background-image: radial-gradient(ellipse farthest-corner at 10px 100px , #fff 50%, rgba(0, 255, 0, 0) 0%, yellow 50%);
+  min-height: 100vh;
+}
+
+.admin-layout-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.admin-layout-header-logo{
+  width: 100px;
+}
+.admin-layout-header-text{
+  text-align: center;
+  color: white;
+}
+.admin-layout-header-text h1{
+  font-size: 35px; /* Tamaño de fuente grande */
+  font-weight: 700; /* Peso de fuente bold */
+  color: #000000; /* Color de texto */
+  text-align: center; /* Alineación centrada */
+   
+  text-transform: uppercase; /* Transformación de texto a mayúsculas */
+  letter-spacing: 2px; /* Espaciado entre letras */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.642); /* Sombra de texto */
+   
+}
+.admin-layout-header-text p{
+  color: black;
+  font-style: oblique;
+}
+.admin-layout-header-text-span{
+  font-weight: 900;
+  font-size: 20px;
+  margin: 10px;
+  background: -webkit-linear-gradient(rgb(242, 242, 242),rgb(43, 0, 255));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: rgb(71, 80, 255); 
+   
+}
+
+.web-layout{
+  background-image: radial-gradient(ellipse farthest-corner at 10px 100px , #fff 50%, rgba(0, 255, 0, 0) 0%, yellow 50%);
+  min-height: 100vh;
+}
+
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin: 20px;
+}
+
+.logout-button, .admin-redirect-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover, .admin-redirect-button:hover {
+  background-color: #0056b3;
+}
+
+.header-client {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+   
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .header-client {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header-client nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .admin-layout-header{
+     
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+.nav-client ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-client li {
+  display: inline;
+}
+
+.nav-client a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.nav-client a:hover {
+  text-decoration: underline;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LoginForm from "../../components/LoginForm";
 import RegisterForm from "../../components/RegisterForm";
-import Logo from "../../../public/logo.png"; // Ajusta la ruta según la ubicación real de logo.png en tu proyecto
+import Logo from "/logo.png"; // Ajusta la ruta según la ubicación real de logo.png en tu proyecto
 
 const Auth = () => {
   const [activeTab, setActiveTab] = useState("login");
@@ -10,15 +10,18 @@ const Auth = () => {
     setActiveTab(tab);
   };
 
+  const handleRegisterSuccess = () => {
+    setActiveTab("login");
+  };
+
   return (
     <div className="auth">
       <h3>30 años formando líderes en Cristo para Colombia y las naciones</h3>
       <div className="form-base">
-          <div className="divlogo">
-            <img className="logo-auth" src={Logo} alt="Logo CPCS" />
-          </div>
+        <div className="divlogo">
+          <img className="logo-auth" src={Logo} alt="Logo CPCS" />
+        </div>
         <div className="formulario">
-
           <div className="divbtn">
             <div className="auth__tabs">
               <button
@@ -36,7 +39,9 @@ const Auth = () => {
             </div>
             <div className="auth__forms">
               {activeTab === "login" && <LoginForm />}
-              {activeTab === "register" && <RegisterForm />}
+              {activeTab === "register" && (
+                <RegisterForm onSuccess={handleRegisterSuccess} />
+              )}
             </div>
           </div>
         </div>
@@ -46,3 +51,4 @@ const Auth = () => {
 };
 
 export default Auth;
+
