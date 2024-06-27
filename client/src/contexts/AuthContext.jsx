@@ -1,9 +1,11 @@
+// eslint-disable-next-line no-unused-vars
 import React, { createContext, useState, useEffect, useContext } from "react";
 import axiosInstance from "../api/api";
 
 const AuthContext = createContext();
 
 export const AuthProvider = (props) => {
+  // eslint-disable-next-line react/prop-types
   const { children } = props;
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
@@ -33,8 +35,7 @@ export const AuthProvider = (props) => {
   };
 
   const login = async (accessToken, refreshToken) => {
-    console.log("Login context");
-    console.log("accessToken:", accessToken);
+     
     localStorage.setItem('token', accessToken);
     localStorage.setItem('refreshToken', refreshToken);
     setToken(accessToken);

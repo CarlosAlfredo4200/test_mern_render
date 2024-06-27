@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from 'react-router-dom';
@@ -40,8 +41,6 @@ const LoginForm = () => {
         password: formData.password
       });
       if (response.data.access && response.data.refresh) {
-        console.log("Access Token:", response.data.access);
-        console.log("Refresh Token:", response.data.refresh);
         await login(response.data.access, response.data.refresh); // Llama al método de login del contexto con el refreshToken
         navigate('/admin/users'); // Redirige a AdminLayout después del login exitoso
       } else {

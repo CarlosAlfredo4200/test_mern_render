@@ -186,9 +186,9 @@ form {
 /* AdminHeader.css */
 
 .admin-header {
-  background-color: #f0f0f0;
+   
   padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
 }
 
 .admin-header h4 {
@@ -209,7 +209,8 @@ form {
 }
 
 .admin-header nav ul li {
-  margin-right: 10px;
+  margin: 0 10px;
+  position: relative;
 }
 
 .admin-header nav ul li a {
@@ -217,13 +218,47 @@ form {
   color: #555;
   font-weight: 500;
   padding: 8px 12px;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: background-color 0.3s ease;
 }
 
 .admin-header nav ul li a:hover {
   background-color: #e0e0e0;
 }
+
+.admin-header .dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.admin-header .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: none;
+}
+
+.admin-header .dropdown:hover .dropdown-menu,
+.admin-header .dropdown-menu:hover {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  white-space: nowrap;
+   
+}
+
+.dropdown-menu li:hover {
+  background-color: #f1f1f1;
+}
+
+
 
 
 .admin-layout{

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
 const AdminHeader = () => {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
+
   return (
     <div className="admin-header">
-      
       <nav>
         <ul>
           <li>
@@ -15,7 +19,25 @@ const AdminHeader = () => {
             <Link to="/admin/blog">Blog</Link>
           </li>
           <li>
-            <Link to="/admin/academico">Académico</Link>
+            <div className="dropdown">
+              <button onClick={toggleDropdown}>
+                Académico
+              </button>
+              {isDropdownOpen && (
+                <ul className="dropdown-menu">
+                  
+                  <li>
+                    <Link to="/admin/academico">Informe Académico</Link>
+                  </li>
+                  <li>
+                    <Link to=" ">Informe Académico</Link>
+                  </li>
+                  <li>
+                    <Link to=" ">Informe Académico</Link>
+                  </li>
+                </ul>
+              )}
+            </div>
           </li>
           <li>
             <Link to="/admin/administracion">Administración</Link>
