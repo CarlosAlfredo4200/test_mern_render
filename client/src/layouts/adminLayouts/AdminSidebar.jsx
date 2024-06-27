@@ -1,10 +1,11 @@
-
+ 
 const AdminSidebar = () => {
   return (
-    <div>
-      <h4>Usando Admin Sidebar</h4>
-    </div>
-  )
-}
+    <>
+      <h2 className="sidebarH2">Sidebar Admin</h2>
+       
+    </>
+  );
+};
 
-export default AdminSidebar
+export default AdminSidebar;

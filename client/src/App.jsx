@@ -15,8 +15,12 @@ import ClientLayouts from "./layouts/clientLayouts/ClientLayouts";
 import Colegio from "./pages/web/Colegio";
 import Contactos from "./pages/web/Contactos";
 import Q10Web from "./pages/web/Q10web";
+import './App.css'
+import General from "./pages/admin/academicos/General";
+import Areas from "./pages/admin/academicos/Areas";
+import Layout from "./components/Layout";
+import InformeAcademico from "./pages/admin/InformeAcademico";
 
-import './App.css';
 
 const App = () => {
   return (
@@ -48,7 +52,11 @@ const AppContent = () => {
           <Route element={<AdminLayout />}>
             <Route path="/admin/users" element={<Users />} />
             <Route path="/admin/blog" element={<Blog />} />
-            <Route path="/admin/academico" element={<Academicos />} />
+            <Route path="/admin/academico" element={<Layout />}>
+              <Route index element={<General />}/>
+              <Route path="/admin/academico/general" element={<General />}/>
+              <Route path="/admin/academico/areas" element={<Areas />}/>
+            </Route>
             <Route path="/admin/administracion" element={<Administrativos />} />
             <Route path="/admin/q10" element={<Q10 />} />
             <Route path="/admin/*" element={<Navigate to="/admin/users" />} />
@@ -58,5 +66,7 @@ const AppContent = () => {
     </BrowserRouter>
   );
 };
+
+ 
 
 export default App;
