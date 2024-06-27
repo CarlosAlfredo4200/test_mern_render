@@ -23,7 +23,7 @@ export const AuthProvider = (props) => {
 
   const fetchUserData = async (token) => {
     try {
-      const response = await axiosInstance.get('http://localhost:3000/api/users/user/me', {
+      const response = await axiosInstance.get(`${import.meta.env.VITE_BACKEND_URL}/api/users/user/me`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -53,7 +53,7 @@ export const AuthProvider = (props) => {
 
   const refreshAccessToken = async () => {
     try {
-      const response = await axiosInstance.post('http://localhost:3000/api/auth/refresh_access_token', {
+      const response = await axiosInstance.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/refresh_access_token`, {
         refresh_token: refreshToken,
       });
       if (response.data.success) {
