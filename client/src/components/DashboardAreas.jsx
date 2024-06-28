@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
-import BarChartComponent from "./BarChartComponentGrupos";
 import { Students } from "../api/DataApi";
-import PieChartComponent from "./PieChartComponent";
-import NewDatatable from "./NewDatatable";
 import MetasGrupo from "./MetasGrupo";
 import PromedioGrupos from "./PromedioGrupos";
-import Filtros from "./Filtros";
-import LoadingSpinner from "./LoadingSpinner"; // Importa el componente LoadingSpinner
+import LoadingSpinner from "./LoadingSpinner";
+import FiltrosAreas from "./FiltrosAreas";
+import BarChartComponentAreas from "./BarChartComponentAreas";
+import DatatableAreas from "./DataTableAreas";
+import PieChartComponentAreas from "./PieChartComponentAreas";
+ 
 
-const NewDashboard = () => {
+const DashboardAreas = () => {
   const [students, setStudents] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [error, setError] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState("");
   const [selectedPeriodo, setSelectedPeriodo] = useState("");
   const [selectedScale, setSelectedScale] = useState("");
+  const [selectedArea, setSelectedArea] = useState("ciencias_naturales"); // Estado para el área seleccionada
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,10 +24,10 @@ const NewDashboard = () => {
       try {
         const data = await Students();
         setStudents(data);
-        setLoading(false); // Cambia el estado de carga a false cuando se completó la carga
+        setLoading(false);
       } catch (error) {
         setError("Error fetching students");
-        setLoading(false); // Asegúrate de cambiar el estado de carga en caso de error
+        setLoading(false);
       }
     }
 
@@ -49,12 +51,13 @@ const NewDashboard = () => {
 
     if (selectedScale) {
       filtered = filtered.filter((student) => {
+        const value = parseFloat(student[selectedArea]); // Obtén el valor del área seleccionada
         let group;
-        if (student.promedio < 3) {
+        if (value < 3) {
           group = "DI";
-        } else if (student.promedio < 4) {
+        } else if (value < 4) {
           group = "BÁSICO";
-        } else if (student.promedio < 4.6) {
+        } else if (value < 4.6) {
           group = "DA";
         } else {
           group = "DS";
@@ -63,51 +66,68 @@ const NewDashboard = () => {
       });
     }
 
+    if (selectedArea) {
+      filtered = filtered.filter(
+        (student) => student[selectedArea] !== undefined
+      );
+    }
+
     setFilteredStudents(filtered);
-  }, [students, selectedGroup, selectedPeriodo, selectedScale]);
+  }, [students, selectedGroup, selectedPeriodo, selectedScale, selectedArea]);
 
   if (loading) {
-    return <LoadingSpinner />; // Muestra el spinner mientras se cargan los datos
+    return <LoadingSpinner />;
   }
-
   return (
     <div className="dashboard_div">
       <div className="dashboard_div_filtros">
-        <Filtros
+        <FiltrosAreas
           selectedPeriodo={selectedPeriodo}
           setSelectedPeriodo={setSelectedPeriodo}
           selectedGroup={selectedGroup}
           setSelectedGroup={setSelectedGroup}
           selectedScale={selectedScale}
           setSelectedScale={setSelectedScale}
+          selectedArea={selectedArea} // Pasar el área seleccionada
+          setSelectedArea={setSelectedArea} // Pasar la función para cambiar el área seleccionada
         />
         <PromedioGrupos
           className="promedio_grupos"
           students={filteredStudents}
+          selectedArea={selectedArea}
           error={error}
         />
       </div>
 
       <div className="graficas_generales">
-        <BarChartComponent students={filteredStudents} error={error} />
+        <BarChartComponentAreas
+          students={filteredStudents}
+          selectedArea={selectedArea}
+          error={error}
+        />
       </div>
 
       <div className="prom_tables">
         <div className="box_prom_tables">
-           
-          <NewDatatable students={filteredStudents} error={error} />
+          <DatatableAreas
+            students={filteredStudents}
+            selectedArea={selectedArea}
+            error={error}
+          />
         </div>
         <div className="box_prom_tables">
-          <PieChartComponent students={filteredStudents} error={error} />
+          <PieChartComponentAreas
+            students={filteredStudents}
+            selectedArea={selectedArea}
+            error={error}
+          />
         </div>
       </div>
       <div>
-        <div>
-          <MetasGrupo />
-        </div>
+        
       </div>
     </div>
   );
 };
 
-export default NewDashboard;
+export default DashboardAreas;

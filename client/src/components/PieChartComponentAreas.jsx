@@ -1,19 +1,25 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
-const PieChartComponent = ({ students, error }) => {
+const PieChartComponentAreas = ({ students, selectedArea, error }) => {
   // Filtrar estudiantes únicos por su código
   const uniqueStudents = Array.from(new Set(students.map(student => student.codigo)));
-
-
+  
+  // Filtrar estudiantes únicos
+  const uniqueStudentsData = uniqueStudents.map(codigo => students.find(student => student.codigo === codigo));
+  
   // Filtrar estudiantes y agrupar por promedio según los criterios
-  const groupedData = students.reduce((accumulator, student) => {
+  const filteredStudents = selectedArea ? uniqueStudentsData.filter(student => student[selectedArea] !== undefined) : uniqueStudentsData;
+
+  const groupedData = filteredStudents.reduce((accumulator, student) => {
     let group;
-    if (student.promedio < 3) {
+    const value = parseFloat(student[selectedArea]); // Obtén el valor del área seleccionada
+
+    if (value < 3) {
       group = 'DI';
-    } else if (student.promedio < 4) {
+    } else if (value < 4) {
       group = 'BÁSICO';
-    } else if (student.promedio < 4.6) {
+    } else if (value < 4.6) {
       group = 'DA';
     } else {
       group = 'DS';
@@ -68,4 +74,8 @@ const PieChartComponent = ({ students, error }) => {
   );
 };
 
-export default PieChartComponent;
+export default PieChartComponentAreas;
+
+
+
+

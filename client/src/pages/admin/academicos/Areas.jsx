@@ -1,9 +1,10 @@
 import React from 'react'
-
+import DashboardAreas from '../../../components/DashboardAreas'
+DashboardAreas
 const Areas = () => {
   return (
     <div>
-      <h3>Áreas</h3>
+      <DashboardAreas />
     </div>
   )
 }
