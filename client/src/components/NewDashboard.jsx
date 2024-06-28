@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
 import BarChartComponent from "./BarChartComponentGrupos";
 import { Students } from "../api/DataApi";
@@ -7,6 +6,7 @@ import NewDatatable from "./NewDatatable";
 import MetasGrupo from "./MetasGrupo";
 import PromedioGrupos from "./PromedioGrupos";
 import Filtros from "./Filtros";
+import LoadingSpinner from "./LoadingSpinner"; // Importa el componente LoadingSpinner
 
 const NewDashboard = () => {
   const [students, setStudents] = useState([]);
@@ -15,14 +15,17 @@ const NewDashboard = () => {
   const [selectedGroup, setSelectedGroup] = useState("");
   const [selectedPeriodo, setSelectedPeriodo] = useState("");
   const [selectedScale, setSelectedScale] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchStudents() {
       try {
         const data = await Students();
         setStudents(data);
+        setLoading(false); // Cambia el estado de carga a false cuando se completó la carga
       } catch (error) {
         setError("Error fetching students");
+        setLoading(false); // Asegúrate de cambiar el estado de carga en caso de error
       }
     }
 
@@ -63,10 +66,13 @@ const NewDashboard = () => {
     setFilteredStudents(filtered);
   }, [students, selectedGroup, selectedPeriodo, selectedScale]);
 
+  if (loading) {
+    return <LoadingSpinner />; // Muestra el spinner mientras se cargan los datos
+  }
+
   return (
     <div className="dashboard_div">
       <div className="dashboard_div_filtros">
-        
         <Filtros
           selectedPeriodo={selectedPeriodo}
           setSelectedPeriodo={setSelectedPeriodo}
@@ -75,16 +81,15 @@ const NewDashboard = () => {
           selectedScale={selectedScale}
           setSelectedScale={setSelectedScale}
         />
+        <PromedioGrupos
+          className="promedio_grupos"
+          students={filteredStudents}
+          error={error}
+        />
       </div>
 
       <div className="graficas_generales">
-        <div className="grafica_box">
-          <BarChartComponent students={filteredStudents} error={error} />
-        </div>
-
-        <div className="grafica_box">
-          <PieChartComponent students={filteredStudents} error={error} />
-        </div>
+        <BarChartComponent students={filteredStudents} error={error} />
       </div>
 
       <div className="prom_tables">
@@ -92,11 +97,7 @@ const NewDashboard = () => {
           <NewDatatable students={filteredStudents} error={error} />
         </div>
         <div className="box_prom_tables">
-          <PromedioGrupos
-            className="promedio_grupos"
-            students={filteredStudents}
-            error={error}
-          />
+          <PieChartComponent students={filteredStudents} error={error} />
         </div>
       </div>
       <div>

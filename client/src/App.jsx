@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import {
@@ -32,6 +32,7 @@ const App = () => {
 
 const AppContent = () => {
   const { user } = useAuth();
+  const [loading, setLoading] = useState(false); // Estado de carga
 
   return (
     <BrowserRouter>
@@ -53,9 +54,9 @@ const AppContent = () => {
             <Route path="/admin/users" element={<Users />} />
             <Route path="/admin/blog" element={<Blog />} />
             <Route path="/admin/academico" element={<Layout />}>
-              <Route index element={<General />}/>
-              <Route path="/admin/academico/general" element={<General />}/>
-              <Route path="/admin/academico/areas" element={<Areas />}/>
+              <Route index element={<General />} />
+              <Route path="/admin/academico/general" element={<General />} />
+              <Route path="/admin/academico/areas" element={<Areas />} />
             </Route>
             <Route path="/admin/administracion" element={<Administrativos />} />
             <Route path="/admin/q10" element={<Q10 />} />
@@ -67,6 +68,5 @@ const AppContent = () => {
   );
 };
 
- 
-
 export default App;
+

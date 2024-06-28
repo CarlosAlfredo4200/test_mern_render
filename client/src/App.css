@@ -536,6 +536,8 @@ form {
   }
 
   .dashboard_div_filtros{
+    display: flex;
+    flex-direction: row;
     margin: 5px;
     background-color: rgba(255, 255, 255, 0.445);
     border-radius: 8px;
@@ -578,28 +580,14 @@ box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
 
 .graficas_generales{
     display: flex;
-    gap: 1px;
     justify-content: space-between;
-     
-    
-     
-  }
-
-  .graficas_generales .grafica_box:nth-child(1){
-    flex-basis: calc(85% - 5px);
-    background-color: rgba(255, 255, 255, 0.795);
+    background-color: rgba(255, 255, 255, 0.874);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.312); /* Agrega una sombra sutil */
     border-radius: 8px; /* Bordes redondeados */
     
-    }
-    
-    .graficas_generales .grafica_box:nth-child(2){
-        flex-basis: calc(15% - 5px); 
-        padding: 2px;
-        box-shadow: 0 2px 4px rgba(1, 10, 253, 0.312); /* Agrega una sombra sutil */
-        border-radius: 8px; /* Bordes redondeados */
-        background-color: rgba(255, 255, 255, 0.795);
   }
+
+   
 
 
   
@@ -667,38 +655,49 @@ box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
 
 .table_metas{
   display: flex;
-  
   justify-content: space-around;
+   
   
   
   }
   .prom_tables{
     display: flex;
-    gap: 5px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
     align-items: center;
+    margin: 10px 0px;
      
-   
 }
 
-
+.div_promedio_grupos{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  gap: 5px;
+  margin-left: 100px;
+}
 .promedio_grupos{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   text-align: center;
   cursor: pointer;
-  padding: 37px 10px;
-  margin: 20px 0px;
+  padding: 5px 20px;
+  justify-content: center;
+  align-items: center;
+  
+  gap: 3px;
   outline: 0; 
   border: 0;
   border-radius: 0;
-  background: #ffffff;
+  background: #fffffff0;
   color: #7b7b7b;
-  font-size: 20px;
+  font-size: 14px;
   color: #000000;
   font-family: 
   'Quicksand', sansye;
-  border-radius: 12px;
+  border-radius: 8px;
    
   transition: all 0.25s ease;
   -webkit-box-shadow: 8px 8px 14px -11px yellow;
@@ -708,10 +707,13 @@ box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
 }
 
 .prom_tables .box_prom_tables:nth-child(1){
-  flex-basis: calc(80% - 1rem);
+  flex-basis: calc(50% - 1rem);
 }
 .prom_tables .box_prom_tables:nth-child(2){
-  flex-basis: calc(20% - 1rem);
+  flex-basis: calc(50% - 1rem);
+  background-color: rgba(255, 255, 255, 0.956);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.312); /* Agrega una sombra sutil */
+    border-radius: 8px; /* Bordes redondeados */
    
    
 }
@@ -771,4 +773,11 @@ box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
 
 .recharts-cartesian-axis-label {
   font-size: 12px; /* Tamaño de fuente para etiquetas de ejes */
+}
+
+.loader{
+  background-image: radial-gradient(ellipse farthest-corner at 45px 30px , #fff 50%, rgba(0, 255, 0, 0) 0%, yellow 50%);
+  -webkit-box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
 }

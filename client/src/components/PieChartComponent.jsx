@@ -2,6 +2,11 @@ import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
 const PieChartComponent = ({ students, error }) => {
+  // Filtrar estudiantes únicos por su código
+  const uniqueStudents = Array.from(new Set(students.map(student => student.codigo)));
+
+  console.log("Mostrar aca ", uniqueStudents.length); // Mostrar el número de estudiantes únicos
+
   // Filtrar estudiantes y agrupar por promedio según los criterios
   const groupedData = students.reduce((accumulator, student) => {
     let group;
@@ -35,12 +40,12 @@ const PieChartComponent = ({ students, error }) => {
 
   return (
     <div className="pie-chart-container">
-      <ResponsiveContainer width="100%" height={230}>
+      <ResponsiveContainer width="100%" height={420}>
         <PieChart>
           <Pie
             data={data}
-            innerRadius={20}
-            outerRadius={60}
+            innerRadius={40}
+            outerRadius={90}
             fill="#8884d8"
             paddingAngle={6}
             dataKey="value"
@@ -54,7 +59,7 @@ const PieChartComponent = ({ students, error }) => {
           <Legend />
         </PieChart>
       </ResponsiveContainer>
-       
+      
       {error && (
         <div className="error-row">
           <p>{error}</p>
