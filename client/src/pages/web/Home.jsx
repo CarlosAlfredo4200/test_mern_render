@@ -1,9 +1,11 @@
  
 const Home = () => {
   return (
-    <div>
-      <h2>Estamos en Home Page</h2>
-      {/* Contenido de la página principal */}
+    <div className="home-main">
+      <h3>Puertas abiertas...</h3>
+      <div className="admisiones">
+        
+      </div>
     </div>
   )
 }

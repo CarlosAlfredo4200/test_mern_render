@@ -18,8 +18,10 @@ import Q10Web from "./pages/web/Q10web";
 import './App.css'
 import General from "./pages/admin/academicos/General";
 import Areas from "./pages/admin/academicos/Areas";
+
 import Layout from "./components/Layout";
 import InformeAcademico from "./pages/admin/InformeAcademico";
+import DashboardEstDificultades from "./components/DashboardEstDificultades";
 
 
 const App = () => {
@@ -57,6 +59,7 @@ const AppContent = () => {
               <Route index element={<General />} />
               <Route path="/admin/academico/general" element={<General />} />
               <Route path="/admin/academico/areas" element={<Areas />} />
+              <Route path="/admin/academico/estdificultades" element={<DashboardEstDificultades />} />
             </Route>
             <Route path="/admin/administracion" element={<Administrativos />} />
             <Route path="/admin/q10" element={<Q10 />} />

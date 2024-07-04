@@ -1,7 +1,7 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Cell, LabelList } from 'recharts';
 
-const BarChartComponent = ({ students, error }) => {
+const BarChartComponent = ({ students = [], error = null }) => {
   // Agrupar estudiantes por grupo y calcular el promedio de cada grupo
   const groupedData = students.reduce((accumulator, student) => {
     const group = student.grupo.trim();
@@ -64,9 +64,3 @@ const BarChartComponent = ({ students, error }) => {
 };
 
 export default BarChartComponent;
-
-
-
-
-
-

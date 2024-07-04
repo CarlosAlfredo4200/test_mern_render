@@ -38,9 +38,9 @@ const NewDatatable = ({ students, error }) => {
           {currentPageItems.map((student, index) => (
             <tr key={index}>
               <td>{student.nombre}</td>
-              <td>{student.grupo}</td>
-              <td>{student.puesto}</td>
-              <td>{(student.promedio * 1).toFixed(1)}</td>
+              <td className="td-areas">{student.grupo}</td>
+              <td className="td-areas">{student.puesto}</td>
+              <td className="td-areas">{(student.promedio * 1).toFixed(2)}</td>
               
             </tr>
           ))}

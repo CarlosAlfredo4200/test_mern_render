@@ -10,18 +10,31 @@ const Sidebar = () => {
       <h2 className="sidebarH2">INFORMES</h2>
       <nav className="containerNav">
         <Link
-          className={`linkNav ${location.pathname === "/admin/academico/general" ? "active" : ""}`}
+          className={`linkNav ${
+            location.pathname === "/admin/academico/general" ? "active" : ""
+          }`}
           to="/admin/academico/general"
         >
           <PiUsersThreeBold className="icons" />
           <p>Estadística generales</p>
         </Link>
         <Link
-          className={`linkNav ${location.pathname === "/admin/academico/areas" ? "active" : ""}`}
+          className={`linkNav ${
+            location.pathname === "/admin/academico/areas" ? "active" : ""
+          }`}
           to="/admin/academico/areas"
         >
           <PiUsersThreeBold className="icons" />
           <p>Estadística por área</p>
+        </Link>
+        <Link
+          className={`linkNav ${
+            location.pathname === "/admin/academico/estdificultades" ? "active" : ""
+          }`}
+          to="/admin/academico/estdificultades"
+        >
+          <PiUsersThreeBold className="icons" />
+          <p>Estudiantes deficientes en su desempeño académico </p>
         </Link>
       </nav>
     </>
@@ -29,4 +42,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
