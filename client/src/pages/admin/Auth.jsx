@@ -31,7 +31,7 @@ const Auth = () => {
                 className={activeTab === "login" ? "active" : ""}
                 onClick={() => handleTabChange("login")}
               >
-                Iciciar sección
+                Iniciar sección
               </button>
               <button
                 className={activeTab === "register" ? "active" : ""}
