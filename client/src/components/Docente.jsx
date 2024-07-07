@@ -2,7 +2,7 @@
 const Docente = () => {
   return (
     <div className='docente'>
-      <h2> <span>Dir Grupo :</span>Carlos Fernando Ruge Uribe</h2>
+      <h3> <span>Dir Grupo :</span>Carlos Fernando Ruge Uribe</h3>
     </div>
   )
 }

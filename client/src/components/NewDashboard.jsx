@@ -81,11 +81,7 @@ const NewDashboard = () => {
           selectedScale={selectedScale}
           setSelectedScale={setSelectedScale}
         />
-        <PromedioGrupos
-          className="promedio_grupos"
-          students={filteredStudents}
-          error={error}
-        />
+        
       </div>
 
       <div className="graficas_generales">

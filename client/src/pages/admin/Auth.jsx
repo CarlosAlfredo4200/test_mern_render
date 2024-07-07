@@ -16,7 +16,10 @@ const Auth = () => {
 
   return (
     <div className="auth">
-      <h3>30 años formando líderes en Cristo para Colombia y las naciones</h3>
+      <div className="header-login">
+        <h1>CPCS</h1>
+        <h3><span>30 AÑOS</span>formando líderes en Cristo para Colombia y las naciones</h3>
+      </div>
       <div className="form-base">
         <div className="divlogo">
           <img className="logo-auth" src={Logo} alt="Logo CPCS" />
@@ -28,13 +31,13 @@ const Auth = () => {
                 className={activeTab === "login" ? "active" : ""}
                 onClick={() => handleTabChange("login")}
               >
-                Entrar
+                Iciciar sección
               </button>
               <button
                 className={activeTab === "register" ? "active" : ""}
                 onClick={() => handleTabChange("register")}
               >
-                Nuevo usuario
+                Registrarse
               </button>
             </div>
             <div className="auth__forms">
@@ -51,4 +54,3 @@ const Auth = () => {
 };
 
 export default Auth;
-

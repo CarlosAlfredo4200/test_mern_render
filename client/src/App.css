@@ -125,8 +125,7 @@ h1{
   align-items: center;
   flex-direction: column;
   justify-content: center;
- 
-   
+  
 }
 
 .icons{
@@ -136,7 +135,7 @@ h1{
 }
 
 .logo-auth {
-  width: 360px;
+   
   height: auto;
    
 }
@@ -169,44 +168,70 @@ h1{
   justify-content: center;
   background-image: radial-gradient(ellipse farthest-corner at 45px 30px , #fff 50%, rgba(0, 255, 0, 0) 0%, yellow 50%);
   width: 800px;
-  height: 500px;
   border-radius: 12px;
   border-end-end-radius: 70px;
-   
-  background-color: rgb(186, 186, 186);
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  opacity: 0.9;
+   
+  margin-bottom: 50px;
 
 }
 
+
+.header-login{
+  color: white;
+  text-align: center;   
+  line-height: 0px;
+  margin-bottom: 15px;
+   
+}
+
+.header-login h1{
+  font-size: 65px;
+  margin-bottom: -20px;
+}
+
+.header-login h3{
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-weight: 100;
+}
+
+.header-login span{
+  color: yellow;
+  font-family: "Roboto", sans-serif;
+  margin: 5px;
+  font-weight: 800;
+  
+
+}
 .formulario{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 15px;
-  border-radius: 6px;
-  margin: 30px;
-   
-   
+  border-radius: 12px;
+  border-end-end-radius: 70px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
+
 
 form {
   display: flex;
   flex-wrap: wrap;
-  
+   
+   
 }
  
 .input-group {
   display: flex;
   flex-direction: column;
-   
+    
   width: 100%;
 }
 .input-group label {
-  color: rgb(87, 87, 87);
-  font-weight: lighter;
+  color: rgb(0, 0, 0);
   margin: 10px 0px;
 }
 .input-group input {
@@ -235,6 +260,7 @@ form {
   font-weight: lighter;
   margin-top: 20px;
   cursor: pointer;
+  margin-bottom: 30px;
   /* Agregar transiciones para los cambios de estilo */
   transition: background-color 0.3s, color 0.3s, font-weight 0.3s;
 }
@@ -271,26 +297,103 @@ form {
   background-image: radial-gradient(circle at 50% -20.71%, #a3a7ff 0, #7a8ffc 25%, #3c78f2 50%, #0063e8 75%, #ffffff 100%);
  
   color: black;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .logout-button:focus {
   background-color: hsla(201, 100%, 50%, 0.5);
 }
 
-/* AdminHeader.css */
 
-.admin-header {
-   
-  padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+
+@media (max-width: 1920px) {
+  .form-base{
+   flex-direction: row;
+   width: 60%;
+  }
+  .logo-auth{
+   width: 400px;
+  }
+  .formulario{
+   margin: 40px;
+  }
 }
 
-.admin-header h4 {
-  margin: 0;
-  font-size: 1.5rem;
-  color: #333;
+@media (max-width: 1440px) {
+   .form-base{
+    flex-direction: row;
+    width: 60%;
+   }
+   .logo-auth{
+    width: 400px;
+   }
+   .formulario{
+    margin: 40px;
+   }
 }
+
+@media (max-width: 1280px) {
+  .form-base{
+   flex-direction: row;
+   width: 70%;
+  }
+  .logo-auth{
+   width: 300px;
+  }
+  .formulario{
+   margin: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .form-base{
+   flex-direction: row;
+   width: 70%;
+  }
+  .logo-auth{
+   width: 250px;
+  }
+  .formulario{
+   margin: 30px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .form-base{
+   flex-direction: row;
+   width: 90%;
+  }
+  .logo-auth{
+   width: 250px;
+  }
+  .formulario{
+   margin: 40px;
+  }
+}
+
+
+@media (max-width: 644px) {
+  .form-base{
+   flex-direction: column;
+   width: 90%;
+  }
+  .logo-auth{
+   width: 130px;
+  }
+  .formulario{
+   margin: 20px;
+  }
+}
+  /* Otros estilos para dispositivos móviles pequeños */
+
+
+
+ 
+
+ 
+ 
+/* Otras consultas de medios adicionales según sea necesario */
 
 .admin-header nav {
   margin-top: 10px;
@@ -640,8 +743,11 @@ form {
   .dashboard_div_filtros{
     display: flex;
     flex-direction: row;
+    gap: 5px;
     margin: 5px;
+    justify-content: space-evenly;
     background-color: rgba(255, 255, 255, 0.445);
+    
     border-radius: 8px;
     -webkit-box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
     -moz-box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
@@ -654,8 +760,9 @@ form {
   display: flex;
   flex-direction: row;
   align-items: center;
-   
+  gap: 5px; 
 }
+
 .content-input input,
 .content-select select{
 	appearance: none;
@@ -775,20 +882,22 @@ box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
 .div_promedio_grupos{
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
   gap: 5px;
-  margin-left: 100px;
+   
+  margin-top: 5px;
+  margin-bottom: 5px;
+  
+   
 }
 .promedio_grupos{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   text-align: center;
   cursor: pointer;
   padding: 5px 20px;
   justify-content: center;
   align-items: center;
-  
   gap: 3px;
   outline: 0; 
   border: 0;
@@ -843,7 +952,7 @@ box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
 
 
 .docente{
-  margin-left: 100px;
+   margin: 0px 20px;
 }
 
 .docente h1{

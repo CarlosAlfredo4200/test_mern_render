@@ -1,10 +1,5 @@
-import React from "react";
-
-const PromedioGrupos = ({ students }) => {
-  // Filtrar estudiantes únicos por su código
+const PromedioGrupos = ({ students = [] }) => {
   const uniqueStudents = Array.from(new Set(students.map(student => student.codigo)));
-
-   
 
   const totalStudents = students.length;
   const totalPromedio = students.reduce(
@@ -26,7 +21,7 @@ const PromedioGrupos = ({ students }) => {
       </div>
       <div className="promedio_grupos">
         <div>
-          <h4>{uniqueStudents.length}</h4> {/* Mostrar el número de estudiantes únicos */}
+          <h4>{uniqueStudents.length}</h4>
         </div>
         <div>
           <p>Estudiantes</p>

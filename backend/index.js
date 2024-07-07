@@ -44,6 +44,10 @@ app.use('/api/auth', authRoutes);
 const userRoutes = require("./routes/user");
 app.use('/api/users', userRoutes);
 
+// Rutas para los docentes
+const docenteRoutes = require('./routes/docenteRoutes');
+app.use('/api/docentes', docenteRoutes);
+
 const PORT = process.env.SERVER_PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
