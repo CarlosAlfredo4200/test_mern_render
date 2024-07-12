@@ -1,6 +1,5 @@
 import React from "react";
 import Docente from "./Docente";
-import PromedioGrupos from "./PromedioGrupos";
 
 const Filtros = ({
   selectedPeriodo,
@@ -68,10 +67,10 @@ const Filtros = ({
         <option value="DS">DS</option>
       </select>
 
-      <Docente />
-      <PromedioGrupos />
+      <Docente selectedGroup={selectedGroup} />
     </div>
   );
 };
 
 export default Filtros;
+

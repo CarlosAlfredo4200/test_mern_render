@@ -26,7 +26,8 @@ const StudentNotesSchema = new Schema({
   tecnologia: Number,
   observaciones: String,
   metas: String,
-  reporte_nivelacion: String
+  reporte_nivelacion: String,
+   
 });
 
 module.exports = mongoose.model('StudentNotes', StudentNotesSchema);

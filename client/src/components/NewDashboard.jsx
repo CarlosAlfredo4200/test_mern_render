@@ -6,14 +6,15 @@ import NewDatatable from "./NewDatatable";
 import MetasGrupo from "./MetasGrupo";
 import PromedioGrupos from "./PromedioGrupos";
 import Filtros from "./Filtros";
-import LoadingSpinner from "./LoadingSpinner"; // Importa el componente LoadingSpinner
+import LoadingSpinner from "./LoadingSpinner";
+import { updateMetasGrupo as updateMetasApi } from '../api/dataMetasGrupos'; // Importa la función API
 
 const NewDashboard = () => {
   const [students, setStudents] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [error, setError] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState("");
-  const [selectedPeriodo, setSelectedPeriodo] = useState("");
+  const [selectedPeriodo, setSelectedPeriodo] = useState("PERIODO 1"); // Por defecto selecciona "PERIODO 1"
   const [selectedScale, setSelectedScale] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -22,10 +23,10 @@ const NewDashboard = () => {
       try {
         const data = await Students();
         setStudents(data);
-        setLoading(false); // Cambia el estado de carga a false cuando se completó la carga
+        setLoading(false); // Cambia el estado de carga a falso cuando los datos se han cargado
       } catch (error) {
         setError("Error fetching students");
-        setLoading(false); // Asegúrate de cambiar el estado de carga en caso de error
+        setLoading(false); // Cambia el estado de carga a falso en caso de error
       }
     }
 
@@ -66,8 +67,27 @@ const NewDashboard = () => {
     setFilteredStudents(filtered);
   }, [students, selectedGroup, selectedPeriodo, selectedScale]);
 
+  const updateMetasGrupo = async (groupId, updatedMetas) => {
+    try {
+      const updatedMeta = await updateMetasApi(groupId, updatedMetas);
+      setStudents((prevStudents) =>
+        prevStudents.map((student) => {
+          if (student.grupo === selectedGroup && student.periodo === selectedPeriodo) {
+            return {
+              ...student,
+              metas: updatedMeta,
+            };
+          }
+          return student;
+        })
+      );
+    } catch (error) {
+      console.error("Error updating metas:", error);
+    }
+  };
+
   if (loading) {
-    return <LoadingSpinner />; // Muestra el spinner mientras se cargan los datos
+    return <LoadingSpinner />; // Muestra el spinner mientras los datos están cargando
   }
 
   return (
@@ -81,7 +101,11 @@ const NewDashboard = () => {
           selectedScale={selectedScale}
           setSelectedScale={setSelectedScale}
         />
-        
+        <PromedioGrupos
+          className="promedio_grupos"
+          students={filteredStudents}
+          error={error}
+        />
       </div>
 
       <div className="graficas_generales">
@@ -90,20 +114,25 @@ const NewDashboard = () => {
 
       <div className="prom_tables">
         <div className="box_prom_tables">
-           
           <NewDatatable students={filteredStudents} error={error} />
         </div>
         <div className="box_prom_tables">
           <PieChartComponent students={filteredStudents} error={error} />
         </div>
       </div>
+
       <div>
-        <div>
-          <MetasGrupo />
-        </div>
+        <MetasGrupo
+          selectedGroup={selectedGroup}
+          selectedPeriodo={selectedPeriodo}
+          updateMetasGrupo={updateMetasGrupo}
+        />
       </div>
     </div>
   );
 };
 
 export default NewDashboard;
+
+
+

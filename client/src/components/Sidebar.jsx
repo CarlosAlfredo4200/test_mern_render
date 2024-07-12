@@ -16,7 +16,7 @@ const Sidebar = () => {
           to="/admin/academico/general"
         >
           <PiUsersThreeBold className="icons" />
-          <p>Estadística generales</p>
+          <p>Estadística general</p>
         </Link>
         <Link
           className={`linkNav ${

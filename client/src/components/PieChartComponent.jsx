@@ -4,22 +4,26 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recha
 const PieChartComponent = ({ students, error }) => {
   // Filtrar estudiantes únicos por su código
   const uniqueStudents = Array.from(new Set(students.map(student => student.codigo)));
+   
+  // Filtrar estudiantes únicos y agrupar por promedio según los criterios
+  const groupedData = uniqueStudents.reduce((accumulator, codigo) => {
+    const student = students.find(student => student.codigo === codigo);
+    if (student) {
+      let group;
+      const value = parseFloat(student.promedio); // Obtén el promedio del estudiante
 
+      if (value < 3) {
+        group = 'DI';
+      } else if (value < 4) {
+        group = 'BÁSICO';
+      } else if (value < 4.6) {
+        group = 'DA';
+      } else {
+        group = 'DS';
+      }
 
-  // Filtrar estudiantes y agrupar por promedio según los criterios
-  const groupedData = students.reduce((accumulator, student) => {
-    let group;
-    if (student.promedio < 3) {
-      group = 'DI';
-    } else if (student.promedio < 4) {
-      group = 'BÁSICO';
-    } else if (student.promedio < 4.6) {
-      group = 'DA';
-    } else {
-      group = 'DS';
+      accumulator[group] = (accumulator[group] || 0) + 1;
     }
-
-    accumulator[group] = (accumulator[group] || 0) + 1;
     return accumulator;
   }, {});
 

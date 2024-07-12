@@ -24,33 +24,36 @@ const AdminHeader = () => {
         <img className="admin-layout-header-logo" src={Logo} alt="Logo CPCS" />
         <div className="admin-layout-header-text">
           <p>
-            <span className="admin-layout-header-text-span">30 AÑOS</span>
-            formando líderes en Cristo para Colombia y las naciones
+            <span className="admin-layout-header-text-span">Celebrating 30 years</span>
+             of shaping leaders in Christ for Colombia and the nations
           </p>
         </div>
 
         <nav>
           <ul>
             <li>
-              <Link to="/admin/users">Usuarios</Link>
+              <Link to="/admin/users">Home</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/admin/blog">Blog</Link>
-            </li>
+            </li> */}
             <li>
               <div className="dropdown">
-                <Link onClick={toggleDropdown}>Académico</Link>
+                <Link onClick={toggleDropdown}>Academic</Link>
                 {isDropdownOpen && (
                   <ul className="dropdown-menu">
                     <li>
-                      <Link to="/admin/academico">Informe Académico</Link>
+                      <Link to="/admin/academico">Academic Reports</Link>
+                    </li>
+                    <li>
+                      <Link to="/admin/documentos">PDF Documents</Link>
                     </li>
                   </ul>
                 )}
               </div>
             </li>
             <li>
-              <Link to="/admin/administracion">Administración</Link>
+              <Link to="/admin/administracion">Administration</Link>
             </li>
             <li>
               <Link to="/admin/q10">Q10</Link>
@@ -58,7 +61,7 @@ const AdminHeader = () => {
           </ul>
         </nav>
         <button className="logout-button" onClick={handleLogout}>
-          Cerrar sesión
+          Sing Up
         </button>
       </div>
     </div>

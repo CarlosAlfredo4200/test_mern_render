@@ -66,20 +66,20 @@ const LoginForm = () => {
           name="email" 
           value={formData.email} 
           onChange={handleChange} 
-          placeholder="¡Correo por favor!" 
+          placeholder="¡Email please!" 
         />
       </div>
       <div className="input-group">
-        <label>Contraseña:</label>
+        <label>Password:</label>
         <input 
           type="password" 
           name="password" 
           value={formData.password} 
           onChange={handleChange} 
-          placeholder="¡Ingresa tu clave!" 
+          placeholder="¡Password!" 
         />
       </div>
-      <button type="submit" className="login-button">Ingresar</button>
+      <button type="submit" className="login-button">Enter</button>
       {error && <p className="error" style={{color: 'red'}}>{error}</p>}
     </form>
   );

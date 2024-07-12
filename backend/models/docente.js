@@ -18,6 +18,7 @@ const docenteSchema = new Schema({
   Lugar_nacimiento: String,
   Lugar_residencia: String,
   Direccion: String,
+  Estudiantes_relacionados: [{ type: Schema.Types.ObjectId, ref: 'Estudiante' }]
 });
 
 module.exports = mongoose.model("Docente", docenteSchema);

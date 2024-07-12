@@ -798,7 +798,9 @@ const datos = [
 const usuarios = datos.map(usuario => ({
     name: `${usuario.Primer_nombre} ${usuario.Segundo_nombre} ${usuario.Primer_apellido} ${usuario.Segundo_apellido}`,
     email: usuario.Email,
-    password: usuario.Numero_identificacion
+    password: usuario.Numero_identificacion,
+    
+
 }));
 
 // Convertir a JSON

@@ -740,6 +740,8 @@ form {
     width: 100%;
   }
 
+
+
   .dashboard_div_filtros{
     display: flex;
     flex-direction: row;
@@ -993,54 +995,6 @@ box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
   box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
 }
 
-.Modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  right: auto;
-  bottom: auto;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background-image: radial-gradient(ellipse farthest-corner at 45px 30px , #fff 50%, rgba(0, 255, 0, 0) 0%, yellow 50%);
-  border-radius: 4px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.Overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.75);
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-}
-
-.modal-body {
-  margin-top: 20px;
-}
-
-.modal-footer {
-  margin-top: 20px;
-  text-align: right;
-}
-
-textarea {
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-  margin-top: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
 
 
 .estdificultades-cards{
@@ -1119,3 +1073,513 @@ textarea {
   border: none;
   
 }
+
+
+.nom-docente{
+  font-family: "Raleway", sans-serif;
+}
+
+/* ---------------------- Estilos para Metas-------------------  */
+
+.metas-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-image: radial-gradient(circle at 50% -20.71%,#0051ded6 100%, #a3a8ff90 0, #7a8ffc 25%, #3c78f2 50%, #0063e8 75% );
+  margin: 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgb(255, 255, 255);
+  -webkit-box-shadow: 8px 8px 14px -11px rgb(255, 255, 255);
+  -moz-box-shadow: 8px 8px 14px -11px rgb(255, 255, 255);
+  box-shadow: 8px 8px 14px -11px rgb(255, 255, 255);
+}
+
+.metas-container h2{
+  color: white;
+}
+
+.metas-bloque {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+ .b1 {
+ 
+ margin: 5px;
+ padding: 10px;
+ border-radius: 5px;
+ box-shadow: 0 2px 4px rgba(248, 247, 247, 0.916);
+  -webkit-box-shadow: 8px 8px 14px -11px rgb(220, 220, 220);
+  -moz-box-shadow: 8px 8px 14px -11px rgb(232, 232, 232);
+  box-shadow: 8px 8px 14px -11px rgb(217, 217, 217);
+
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s;
+}
+
+.card h3, .card h4 {
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+
+.card p {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  color: #555;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.metas-container .card:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+
+/* Estilo para las etiquetas de texto del promedio */
+.average-text {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+   
+}
+
+/* Estilo para las barras del gráfico */
+.recharts-bar-rectangle {
+  stroke: #333;
+  stroke-width: 1;
+  opacity: 0.8;
+}
+
+/* Estilo para el tooltip */
+.recharts-tooltip-wrapper {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+}
+
+
+.BarChartComponent_pdf{
+   width: 80%;
+   margin-left: auto;
+   margin-right: auto;
+   align-items: center;
+   background-color: rgba(216, 216, 216, 0.437);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(135, 135, 135, 0.25) 0px 50px 10px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+ 
+/* ----------------------------- */
+
+.dashboard_div-doc{
+  padding: 5px;
+  background-color: rgb(251, 251, 251);
+}
+.dashboard_div-doc-header{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  
+  justify-content:center;
+  align-items: center;
+  margin-top: 40px;
+  
+}
+
+.prom_tables-container{
+  display: flex;
+  gap: 15px;
+  width: 80%;
+  margin-top: 50px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: auto;
+  margin-right: auto;
+  
+  height: 100vh;
+
+}
+.prom_tables-container .box_prom_tables-doc:nth-child(1){
+  flex-basis: calc(60% - 1rem);
+  padding: 20px;
+}
+.prom_tables-container .box_prom_tables-doc:nth-child(2){
+  flex-basis: calc(40% - 1rem);
+  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.312); /* Agrega una sombra sutil */
+    border-radius: 5px; /* Bordes redondeados */
+    
+   
+   
+}
+.box_prom_tables-doc {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; 
+  
+  
+}
+
+.info-card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  
+}
+
+.info-title {
+  font-size: 30px;
+  margin-bottom: 50px;
+  font-weight: bold;
+  color: #333;
+}
+
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.info-item {
+  
+  font-size: 25px;
+  margin: 5px 0;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-value {
+  font-weight: bold;
+  color: #007bff;
+  font-size: 20px;
+   
+}
+/* Estilos modal de estudiantes */
+
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.modal-body {
+  background-color: rgba(255, 255, 255, 0.934);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 70%;
+  max-height: 80%;
+  overflow-y: auto; /* Permite el scroll en el contenido del modal */
+}
+
+
+
+
+.modal-body-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-body-btn-save {
+   
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+  background-color: green;
+  color: white;
+  margin: 5px 0px;
+}
+
+.modal-body-btn-close{
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+  background-color: red;
+  color: white;
+}
+
+.modal-body-btn-save:hover {
+  opacity: 0.8;
+}
+.modal-body-btn-close:hover {
+  opacity: 0.8;
+}
+
+
+ 
+
+.Modal-metas {
+   
+  display: flex;
+   
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  padding: 20px;
+  background-image: radial-gradient(ellipse farthest-corner at 45px 30px , #fff 50%, rgba(0, 255, 0, 0) 0%, yellow 50%);
+  border-radius: 4px;
+   
+  width: 70%;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-header-metas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.modal-body-metas{
+  display: flex;
+  flex-direction: column;
+   
+
+}
+
+.modal-footer-metas {
+  margin-top: 20px;
+  text-align: right;
+}
+
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.textarea-modal{
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+
+
+.metas-bloque-btn{
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+/* ------------------------------------------------- */
+ 
+/* Estilos para el fondo oscuro y el modal centrado */
+.metas-container-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.metas-modal-content {
+  background-color: rgba(255, 255, 255, 0.934);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 70%;
+  max-height: 80%;
+  overflow-y: auto; /* Permite el scroll en el contenido del modal */
+}
+
+.metas-modal-content h2 {
+  margin-top: 0;
+  color: black;
+}
+.metas-modal-content label {
+  margin-top: 0;
+  color: rgb(5, 5, 5);
+  font-weight: 900;
+}
+
+.metas-modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.metas-modal-content textarea {
+  width: 100%;
+  max-height: 100px; /* Altura máxima del textarea */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  overflow-y: auto; /* Permite el scroll dentro del textarea */
+}
+
+.metas-modal-content button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.metas-modal-content button[type="submit"] {
+  background-color: green;
+  color: white;
+}
+
+.metas-modal-content button[type="button"] {
+  background-color: red;
+  color: white;
+}
+
+.metas-modal-content button:hover {
+  opacity: 0.8;
+}
+
+
+
+/*--------------------- Users.css--------------------------- */
+
+/* Users.css */
+
+.users-container {
+  background-image: url('/DSC06282.JPG');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  width: 70%;
+}
+
+h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+p {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.construction-message {
+  font-size: 1.2em;
+  margin-top: 20px;
+  font-weight: bold;
+  padding: 10px;
+  color: white;
+  animation: background-color-change 4s infinite;
+}
+
+@keyframes background-color-change {
+  0% { background-color: #ff0000; }
+  25% { background-color: #ffa500; }
+  50% { background-color: #ffff00; }
+  75% { background-color: #008000; }
+  100% { background-color: #0000ff; }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5em;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .construction-message {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .construction-message {
+    font-size: 0.9em;
+  }
+}
+
+
+
+/* ----------------------------------------------------- */
