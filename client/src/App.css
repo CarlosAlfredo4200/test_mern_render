@@ -1169,7 +1169,7 @@ box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
 
 
 .BarChartComponent_pdf{
-   width: 80%;
+   width: 95%;
    margin-left: auto;
    margin-right: auto;
    align-items: center;
@@ -1200,7 +1200,7 @@ box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
 .prom_tables-container{
   display: flex;
   gap: 15px;
-  width: 80%;
+  width: 95%;
   margin-top: 50px;
   justify-content: center;
   align-items: flex-start;
@@ -1211,11 +1211,11 @@ box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
 
 }
 .prom_tables-container .box_prom_tables-doc:nth-child(1){
-  flex-basis: calc(60% - 1rem);
+  flex-basis: calc(50% - 1rem);
   padding: 20px;
 }
 .prom_tables-container .box_prom_tables-doc:nth-child(2){
-  flex-basis: calc(40% - 1rem);
+  flex-basis: calc(50% - 1rem);
   
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.312); /* Agrega una sombra sutil */
     border-radius: 5px; /* Bordes redondeados */
@@ -1228,6 +1228,38 @@ box-shadow: 8px 8px 14px -11px rgba(66, 68, 90, 1);
   
   
 }
+
+
+
+
+
+/* -------------Descargar PDF --------------------------------------------------- */
+
+.documentos-btn {
+  display: flex;
+  justify-content: center;
+  width: 95%;
+}
+
+.documentos_btn_btn {
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Cambiamos la transición para que afecte a todos los cambios */
+  padding: 20px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Efecto hover */
+.documentos_btn_btn:hover {
+  background-color: #0056b3; /* Color más oscuro en hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  transform: translateY(-3px); /* Efecto de elevación */
+}
+
+/* ---------------------------------------------------------------- */
 
 .info-card {
   background-color: #fff;

@@ -63,7 +63,7 @@ const FiltrosAreasDocumentos = ({
       
 
       <Docente />
-      <button>Ver PDF</button>
+   
     </div>
   );
 };
