@@ -24,6 +24,8 @@ import DashboardEstDificultades from "./components/DashboardEstDificultades";
 import Documentos from "./pages/admin/academicos/Documentos";
 import InformeAreaGrupPDF from "./pages/admin/academicos/InformeAreaGrupPDF";
 import DescargarPdf from "./components/DescargarPdf";
+import { InfoIndividual } from "./pages/admin/academicos/InfoIndividual";
+
 
 const App = () => {
   useEffect(() => {
@@ -83,6 +85,7 @@ const AppContent = () => {
               <Route index element={<General />} />
               <Route path="/admin/academico/general" element={<General />} />
               <Route path="/admin/academico/areas" element={<Areas />} />              
+              <Route path="/admin/academico/individual" element={<InfoIndividual />} />              
               <Route path="/admin/academico/estdificultades" element={<DashboardEstDificultades />} />
             </Route>
             <Route path="/admin/documentos" element={<Documentos />} />              

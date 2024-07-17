@@ -52,6 +52,12 @@ app.use('/api/docentes', docenteRoutes);
 const metasRoutes = require('./routes/metasGrupoRoutes');
 app.use('/api/metas', metasRoutes);
 
+// Rutas para los datos globales
+const studentsGlobalRoutes = require('./routes/student_datos_globales_Routes');
+app.use('/api/studentGlobal', studentsGlobalRoutes);
+
+
+
 const PORT = process.env.SERVER_PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);

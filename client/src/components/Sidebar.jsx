@@ -29,7 +29,18 @@ const Sidebar = () => {
         </Link>
         <Link
           className={`linkNav ${
-            location.pathname === "/admin/academico/estdificultades" ? "active" : ""
+            location.pathname === "/admin/academico/individual" ? "active" : ""
+          }`}
+          to="/admin/academico/individual"
+        >
+          <PiUsersThreeBold className="icons" />
+          <p>Estadística individual</p>
+        </Link>
+        <Link
+          className={`linkNav ${
+            location.pathname === "/admin/academico/estdificultades"
+              ? "active"
+              : ""
           }`}
           to="/admin/academico/estdificultades"
         >

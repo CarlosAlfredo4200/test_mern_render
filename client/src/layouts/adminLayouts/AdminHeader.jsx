@@ -25,7 +25,7 @@ const AdminHeader = () => {
         <div className="admin-layout-header-text">
           <p>
             <span className="admin-layout-header-text-span">Celebrating 30 years</span>
-             of shaping leaders in Christ for Colombia and the nations
+              
           </p>
         </div>
 

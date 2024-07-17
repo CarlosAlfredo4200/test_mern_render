@@ -118,7 +118,7 @@ const MetasGrupo = ({ selectedGroup, selectedPeriodo }) => {
         </div>
       </div>
 
-      <button className='metas-bloque-btn' onClick={() => openEditModal(metasToDisplay)}>Editar</button>
+      <button className="login-button" onClick={() => openEditModal(metasToDisplay)}>Editar</button>
 
       {editModalOpen && (
         <EditMetasGrupoModal
