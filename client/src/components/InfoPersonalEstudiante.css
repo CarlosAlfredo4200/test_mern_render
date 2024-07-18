@@ -14,6 +14,7 @@
     color: red;
     display: flex;
     flex-direction: row;
+    
     justify-content: flex-start;
     align-items: center;
     /* Estilos específicos para la clase 'perdida-container' */
@@ -38,7 +39,5 @@
     /* Estilos para los botones u otras acciones */
   }
   
-  .info-personal-container-btn {
-    /* Estilos para el botón de descarga */
-  }
+  
   

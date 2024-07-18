@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { PiUsersThreeBold } from "react-icons/pi";
+import { FaSchool } from "react-icons/fa";
+import { BsFillPersonVcardFill } from "react-icons/bs";
+import { TbStairsDown } from "react-icons/tb";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -9,15 +12,19 @@ const Sidebar = () => {
     <>
       <h2 className="sidebarH2">INFORMES</h2>
       <nav className="containerNav">
-        <Link
-          className={`linkNav ${
-            location.pathname === "/admin/academico/general" ? "active" : ""
-          }`}
-          to="/admin/academico/general"
-        >
-          <PiUsersThreeBold className="icons" />
-          <p>Estadística general</p>
-        </Link>
+        <div className="containerNav-link-container">
+          <Link
+            className={`linkNav ${
+              location.pathname === "/admin/academico/general" ? "active" : ""
+            }`}
+            to="/admin/academico/general"
+          >
+            <FaSchool className="icons" />
+            <div>
+              <p>Estadística general</p>
+            </div>
+          </Link>
+        </div>
         <Link
           className={`linkNav ${
             location.pathname === "/admin/academico/areas" ? "active" : ""
@@ -25,7 +32,9 @@ const Sidebar = () => {
           to="/admin/academico/areas"
         >
           <PiUsersThreeBold className="icons" />
-          <p>Estadística por área</p>
+          <div>
+            <p>Estadística por área</p>
+          </div>
         </Link>
         <Link
           className={`linkNav ${
@@ -33,8 +42,10 @@ const Sidebar = () => {
           }`}
           to="/admin/academico/individual"
         >
-          <PiUsersThreeBold className="icons" />
-          <p>Estadística individual</p>
+          <BsFillPersonVcardFill className="icons" />
+          <div>
+            <p>Estadística individual</p>
+          </div>
         </Link>
         <Link
           className={`linkNav ${
@@ -44,8 +55,10 @@ const Sidebar = () => {
           }`}
           to="/admin/academico/estdificultades"
         >
-          <PiUsersThreeBold className="icons" />
-          <p>Estudiantes deficientes en su desempeño académico </p>
+          <TbStairsDown className="icons" />
+          <div>
+            <p>Deficiente desempeño académico </p>
+          </div>
         </Link>
       </nav>
     </>
